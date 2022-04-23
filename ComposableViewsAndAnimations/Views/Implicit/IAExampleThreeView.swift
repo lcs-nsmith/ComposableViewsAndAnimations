@@ -26,7 +26,7 @@ struct IAExampleThreeView: View {
     // List all fonts available
     // NOTE: This is a very useful gist...
     //       https://gist.github.com/kristopherjohnson/c825cb97b1ad1fe0bc13d709986d0763
-    private static let fontNames: [String] = {
+    static let fontNames: [String] = {
         var names: [String] = []
         for familyName in UIFont.familyNames {
             names.append(contentsOf: UIFont.fontNames(forFamilyName: familyName))
