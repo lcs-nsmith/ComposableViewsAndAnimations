@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomCompasableTwoView: View {
     
-    @State var input: Double = 30.0
+    @State var input: Double = 05.0
     
     @State var animationOpacity: Bool = true
     
@@ -25,14 +25,14 @@ struct CustomCompasableTwoView: View {
                     .foregroundColor(.yellow)
                     .frame(width: 35, height: 35)
                     .opacity(animationOpacity ? 1.0 : 0.0)
-                    .offset(x: (input - 30) * 140 / 30, y: 0.0)
+                    .offset(x: (input - 5) * 140 / 5, y: 0.0)
                 
                 HStack {
                     Text("00")
-                    Slider(value: $input, in: 0.0...60.0, label: {
+                    Slider(value: $input, in: 0.0...10.0, label: {
                         Text("Speed")
                     })
-                    Text("60")
+                    Text("10")
                 }
                 .padding(.horizontal)
             }
