@@ -10,9 +10,10 @@ import SwiftUI
 struct CustomComposableDescriptionView: View {
     
     // MARK: Stored properties
-    @State private var phrase: String = ""
+    @State private var input: String = ""
     
     // MARK: Computed properties
+    
     var body: some View {
         
         VStack(alignment: .leading) {
@@ -25,12 +26,10 @@ struct CustomComposableDescriptionView: View {
                     .padding(.top)
                 
                 Text("""
-                    Replace this with a description of how to use this view.
-
-                    If the view accepts a parameter, provide a control to enter the input below.
+                    Just x:y loading animation.
                     """)
                 
-                TextField("Enter an input value", text: $phrase)
+                TextField("Enter an Colour", text: $input)
                 
             }
             .padding(.bottom)
