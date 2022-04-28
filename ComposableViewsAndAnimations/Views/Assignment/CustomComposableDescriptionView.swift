@@ -20,7 +20,7 @@ struct CustomComposableDescriptionView: View {
             
             Group {
                 
-                Text("Description")
+                Text("Staged Progress Meter")
                     .font(.title2)
                     .bold()
                     .padding(.top)
@@ -28,6 +28,10 @@ struct CustomComposableDescriptionView: View {
                 Text("""
                     Just x:y loading animation.
                     """)
+                
+                Text ("Parameters")
+                    .font(.title3)
+                    .bold()
                 
                 TextField("Enter an Colour", text: $input)
                 
@@ -42,6 +46,10 @@ struct CustomComposableDescriptionView: View {
                     
                 NavigationLink(destination: CustomCompasableTwoView()) {
                         SimpleListItemView(title: "SliderView",
+                                           caption: "A brief description of my view")
+                }
+                NavigationLink(destination: CustomCompasableTwoView()) {
+                        SimpleListItemView(title: "Staged Progress Meter ",
                                            caption: "A brief description of my view")
                 }
             }
