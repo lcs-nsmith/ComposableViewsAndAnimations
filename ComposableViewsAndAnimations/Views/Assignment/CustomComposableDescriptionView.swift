@@ -39,6 +39,11 @@ struct CustomComposableDescriptionView: View {
                     SimpleListItemView(title: "My Composable View",
                                        caption: "A brief description of my view")
                 }
+                    
+                NavigationLink(destination: CustomCompasableTwoView()) {
+                        SimpleListItemView(title: "SliderView",
+                                           caption: "A brief description of my view")
+                }
             }
             
         }

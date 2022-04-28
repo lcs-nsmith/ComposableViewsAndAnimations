@@ -13,6 +13,8 @@ struct CustomCompasableTwoView: View {
     
     @State var animationOpacity: Bool = true
     
+    @State var animationState: Bool = false
+    
     var formattedinput: String {
         return String(format: "%.0f", input)
     }
@@ -25,7 +27,8 @@ struct CustomCompasableTwoView: View {
                     .foregroundColor(.yellow)
                     .frame(width: 35, height: 35)
                     .opacity(animationOpacity ? 1.0 : 0.0)
-                    .offset(x: (input - 5) * 140 / 5, y: 0.0)
+                    .offset(x: (input - 5) * 140 / 5, y: animationState ? -30.0 : 0.0)
+                
                 
                 HStack {
                     Text("00")
@@ -34,11 +37,14 @@ struct CustomCompasableTwoView: View {
                     })
                     Text("10")
                 }
-                .padding(.horizontal)
+//                .onChange(of: input) {
+//                    animationState.toggle()
+//                }
             }
+            .padding(.horizontal)
             
             Text("\(formattedinput)")
-            
+                .font(.title)
         }
     }
 }
