@@ -14,10 +14,10 @@ struct CustomViewThreeView: View {
     @State var animationParameter: CGFloat = 0
     
     // Controls which level the progress capsule stops at
-    @State var animationMultiplier: CGFloat = 2
+    @State var animationMultiplier: CGFloat
     
     // Controls the speed of the animation
-    @State var animationDuration: CGFloat = 0.5
+    @State var animationDuration: CGFloat
     
     // Controls the superimposed rectangle for the second level ⭐︎⭐︎
     @State var twoStarOpacity: Bool = false
@@ -53,6 +53,11 @@ struct CustomViewThreeView: View {
                             .offset(y: -37)
                             .foregroundColor(.yellow)
                             .opacity(twoStarOpacity ? 1.0 : 0.0)
+                        Rectangle()
+                            .frame(width: 40 - 8, height: 10, alignment: .center)
+                            .offset(y: 47)
+                            .foregroundColor(.yellow)
+                            .opacity(oneStarOpacity ? 1.0 : 0.0)
                     }
                 }
                 VStack (alignment: .leading) {
@@ -77,11 +82,11 @@ struct CustomViewThreeView: View {
             }
             // makes sure the rectangle doesn't show up when bar is only going to ⭐︎
             if animationMultiplier > 1 {
-                withAnimation(Animation.easeOut(duration: 0.0).delay(animationDuration)) {
+                withAnimation(Animation.easeOut(duration: 0.001).delay(animationDuration)) {
                     twoStarOpacity = true
                 }
             }
-            withAnimation(Animation.easeOut(duration: 0.0).delay(animationDuration)) {
+            withAnimation(Animation.easeOut(duration: 0.001).delay(animationDuration)) {
                 oneStarOpacity = true
             }
         }
@@ -91,7 +96,7 @@ struct CustomViewThreeView: View {
 struct CustomViewThreeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CustomViewThreeView()
+            CustomViewThreeView(animationMultiplier: 1, animationDuration: 0.4)
         }
     }
 }
