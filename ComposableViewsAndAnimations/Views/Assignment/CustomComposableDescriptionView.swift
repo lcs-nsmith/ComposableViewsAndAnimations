@@ -11,7 +11,7 @@ struct CustomComposableDescriptionView: View {
     
     // MARK: Stored properties
     
-    @State var animationDuration: CGFloat = 0.1
+    @State var animationDuration: CGFloat = 0.3
     
     @State var stepLevelInput: String = "1"
     
@@ -73,7 +73,7 @@ struct CustomComposableDescriptionView: View {
                     VStack {
                         Text("Animation Duration")
                         HStack {
-                            Stepper("\(String(format:"%.1f",animationDuration))",value: $animationDuration, in: 0.1...0.5, step: 0.1)
+                            Stepper("\(String(format:"%.1f",animationDuration))",value: $animationDuration, in: 0.3...0.5, step: 0.1)
                                 .padding(.trailing)
                         }
                     }
