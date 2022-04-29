@@ -48,8 +48,8 @@ struct CustomComposableDescriptionView: View {
                         SimpleListItemView(title: "SliderView",
                                            caption: "A brief description of my view")
                 }
-                NavigationLink(destination: CustomCompasableTwoView()) {
-                        SimpleListItemView(title: "Staged Progress Meter ",
+                NavigationLink(destination: CustomViewThreeView()) {
+                        SimpleListItemView(title: "Staged Progress Meter",
                                            caption: "A brief description of my view")
                 }
             }
