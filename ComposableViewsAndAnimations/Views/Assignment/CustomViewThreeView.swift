@@ -10,15 +10,20 @@ import UIKit
 
 struct CustomViewThreeView: View {
     
+    // Controls the height of the progress capsule
     @State var animationParameter: CGFloat = 0
     
+    // Controls which level the progress capsule stops at
     @State var animationMultiplier: CGFloat = 2
     
+    // Controls the speed of the animation
     @State var animationDuration: CGFloat = 0.5
     
+    // Controls the superimposed rectangle for the second level ⭐︎⭐︎
     @State var twoStarOpacity: Bool = false
     
-    @State var cornerRadiusActivator: CGFloat = 0
+    // Controls the superimposed rectangle for the first level ⭐︎
+    @State var oneStarOpacity: Bool = false
     
     var body: some View {
         VStack {
@@ -37,10 +42,10 @@ struct CustomViewThreeView: View {
                             .frame(width: 40 - 8, height: 260 - 8, alignment: .leading)
                             .foregroundColor(.white)
                         VStack {
-                        Spacer()
-                        Capsule(style: .continuous)
-                            .frame(width: 40 - 8, height: animationParameter, alignment: .bottom)
-                            .foregroundColor(.yellow)
+                            Spacer()
+                            Capsule(style: .continuous)
+                                .frame(width: 40 - 8, height: animationParameter, alignment: .bottom)
+                                .foregroundColor(.yellow)
                         }
                         .frame(width: 40 - 8, height: 260 - 8, alignment: .bottom)
                         Rectangle()
@@ -70,8 +75,14 @@ struct CustomViewThreeView: View {
             withAnimation(Animation.linear(duration: animationDuration)) {
                 animationParameter = 84 * animationMultiplier
             }
+            // makes sure the rectangle doesn't show up when bar is only going to ⭐︎
+            if animationMultiplier > 1 {
+                withAnimation(Animation.easeOut(duration: 0.0).delay(animationDuration)) {
+                    twoStarOpacity = true
+                }
+            }
             withAnimation(Animation.easeOut(duration: 0.0).delay(animationDuration)) {
-                twoStarOpacity = true
+                oneStarOpacity = true
             }
         }
     }
