@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct CustomViewThreeView: View {
     
@@ -16,6 +17,8 @@ struct CustomViewThreeView: View {
     @State var animationDuration: CGFloat = 0.5
     
     @State var twoStarOpacity: Bool = false
+    
+    @State var cornerRadiusActivator: CGFloat = 0
     
     var body: some View {
         VStack {
@@ -40,11 +43,11 @@ struct CustomViewThreeView: View {
                             .foregroundColor(.yellow)
                         }
                         .frame(width: 40 - 8, height: 260 - 8, alignment: .bottom)
-//                        Rectangle()
-//                            .frame(width: 40 - 8, height: 10, alignment: .center)
-//                            .offset(y: -37)
-//                            .foregroundColor(.yellow)
-//                            .opacity(twoStarOpacity ? 1.0 : 0.0)
+                        Rectangle()
+                            .frame(width: 40 - 8, height: 10, alignment: .center)
+                            .offset(y: -37)
+                            .foregroundColor(.yellow)
+                            .opacity(twoStarOpacity ? 1.0 : 0.0)
                     }
                 }
                 VStack (alignment: .leading) {
@@ -66,6 +69,9 @@ struct CustomViewThreeView: View {
         .onTapGesture {
             withAnimation(Animation.linear(duration: animationDuration)) {
                 animationParameter = 84 * animationMultiplier
+            }
+            withAnimation(Animation.easeOut(duration: 0.0).delay(animationDuration)) {
+                twoStarOpacity = true
             }
         }
     }
