@@ -72,7 +72,7 @@ struct CustomViewThreeView: View {
                     Image(systemName: "star.fill")
                     Capsule()
                         .frame(width: 24, height: 4, alignment: .leading)
-                    Spacer(minLength: 260)
+                    Spacer(minLength: 276)
                 }
             }
         }
