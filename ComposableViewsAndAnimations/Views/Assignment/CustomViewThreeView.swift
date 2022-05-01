@@ -10,6 +10,7 @@ import UIKit
 
 struct CustomViewThreeView: View {
     
+    // MARK: Stored Properties
     // Controls the height of the progress capsule
     @State var animationParameter: CGFloat = 0
     
@@ -25,6 +26,9 @@ struct CustomViewThreeView: View {
     // Controls the superimposed rectangle for the first level ⭐︎
     @State var oneStarOpacity: Bool = false
     
+    let timer = Timer.publish(every: 0.75, on: .main, in: .common).autoconnect()
+    
+    // MARK: Computed Properties
     var body: some View {
         VStack {
             HStack {
@@ -76,7 +80,35 @@ struct CustomViewThreeView: View {
                 }
             }
         }
-        .onTapGesture {
+        //        .onTapGesture {
+        //            withAnimation(Animation.linear(duration: animationDuration)) {
+        //                animationParameter = 84 * animationMultiplier
+        //            }
+        //            // makes sure the rectangle doesn't show up when bar is only going to ⭐︎
+        //            if animationMultiplier > 1 {
+        //                withAnimation(Animation.easeOut(duration: 0.001).delay(animationDuration)) {
+        //                    twoStarOpacity = true
+        //                }
+        //            }
+        //            withAnimation(Animation.easeOut(duration: 0.001).delay(animationDuration)) {
+        //                oneStarOpacity = true
+        //            }
+        //        }
+        //        .onAppear(perform: {
+        //            withAnimation(Animation.linear(duration: animationDuration)) {
+        //                animationParameter = 84 * animationMultiplier
+        //            }
+        //            // makes sure the rectangle doesn't show up when bar is only going to ⭐︎
+        //            if animationMultiplier > 1 {
+        //                withAnimation(Animation.easeOut(duration: 0.001).delay(animationDuration)) {
+        //                    twoStarOpacity = true
+        //                }
+        //            }
+        //            withAnimation(Animation.easeOut(duration: 0.001).delay(animationDuration)) {
+        //                oneStarOpacity = true
+        //            }
+        //        })
+        .onReceive(timer) { input in
             withAnimation(Animation.linear(duration: animationDuration)) {
                 animationParameter = 84 * animationMultiplier
             }
@@ -89,6 +121,7 @@ struct CustomViewThreeView: View {
             withAnimation(Animation.easeOut(duration: 0.001).delay(animationDuration)) {
                 oneStarOpacity = true
             }
+            self.timer.upstream.connect().cancel()
         }
     }
 }
